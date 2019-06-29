@@ -4,11 +4,13 @@
 package library;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -17,18 +19,26 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@Table(name = "bookData")
 public class Book {
 	
 	@Id
 	private int entry_id;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
+	@Column(name = "title", nullable = false)
 	private String title;
+	
+	@Column(name = "aurthorFirst", nullable = false)
 	private String aurthorFirst;
+	
+	@Column(name = "aurthorLast",  nullable = false)
 	private String aurthorLast;
+	
+	@Column(name = "barcode", nullable = false)
 	private String barcode;
 	
-	@OneToMany(mappedBy = "ID_number", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "ID_number", cascade = CascadeType.ALL)
 	private String borrowerID; //foreign key (Patron ID number)
 	
 	private int CheckIn_Out ;

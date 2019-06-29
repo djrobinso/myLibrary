@@ -16,9 +16,11 @@ import library.Book;
 public interface LibraryRepository extends CrudRepository<Book, Integer>{
 	
 	/**
-	 * Query to check book in
-	 * 
+	 * Query to check book in by the barcode and search the database via the barcode
+	 * and pull that information
+	 * @param the scanned barcode from the book
+	 * @return the found book in the database
 	**/
-	@Query("SELECT * FROM libraryData WHERE FIND_IN_SET(left(barcode,7), scannedBarcode )> 0;")
-	Book checkBookIn(String scannedBarcode);
+	@Query(value = "SELECT * FROM bookData WHERE binary barcode = scannedBarcode", nativeQuery=true)
+	public Book checkBookIn(String scannedBarcode);
 }

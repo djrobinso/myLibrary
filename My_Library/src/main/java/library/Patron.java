@@ -3,12 +3,14 @@
  */
 package library;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
@@ -16,19 +18,28 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
+@Table(name = "patronData")
 public class Patron {
 	
 	@Id
 	private int entry_id;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
-	private String firstName, lastName;
+	@Column(name = "firstName", nullable = false)
+	private String firstName;
+	
+	@Column(name = "lastName", nullable = false)
+	private String lastName;
+	
+	@Column(name = "address", nullable = false)
 	private String address;
 	
-	@OneToMany
-	@JoinColumn
+	//@OneToMany
+	//@JoinColumn
+	@Column(name = "ID_number", nullable = false)
 	private String ID_number;
 	
+	@Column(name = "occupation", nullable = false)
 	private String occupation;
 	
 	public Patron() {
@@ -86,7 +97,6 @@ public class Patron {
 	public void setEntry_id(int entry_id) {
 		this.entry_id = entry_id;
 	}
-	
 	
 	
 	
