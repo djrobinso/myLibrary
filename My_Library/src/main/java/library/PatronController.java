@@ -33,4 +33,8 @@ public class PatronController {
 		model.put("patron", patron);
 		return "newPatron";
 	}
+	
+	/**
+	 * submitNewPatron will take you to the confirmation page
+	 * */
 }
