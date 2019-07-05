@@ -3,8 +3,13 @@
  */
 package library;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,11 +24,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "patronData")
-public class Patron {
+public class Patron implements Serializable{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "patronEntryID")
 	private int entry_id;
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
@@ -34,24 +40,27 @@ public class Patron {
 	@Column(name = "address", nullable = false)
 	private String address;
 	
-	//@OneToMany
-	//@JoinColumn
 	@Column(name = "ID_number", nullable = false)
 	private String ID_number;
 	
 	@Column(name = "occupation", nullable = false)
 	private String occupation;
 	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "patron", cascade = CascadeType.ALL)
+	private Set<Book> booksCheckedOut;
+	
+	
 	public Patron() {
 		
 	}
 	
-	public Patron(String firstName, String lastName, String address, String ID_number, String occupation){
+	public Patron(String firstName, String lastName, String address, String ID_number, String occupation, Set<Book> booksCheckedOut){
 		this.firstName  = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.ID_number = ID_number;
 		this.occupation = occupation;
+		this.booksCheckedOut = booksCheckedOut;
 	}
 	
 	public String getFirstName() {
@@ -96,6 +105,14 @@ public class Patron {
 
 	public void setEntry_id(int entry_id) {
 		this.entry_id = entry_id;
+	}
+	
+	public Set getBooksCheckedOut() {
+		return booksCheckedOut;
+	}
+	
+	public void setBooksCheckedOut(Set<Book> booksCheckedOut) {
+		this.booksCheckedOut = booksCheckedOut;
 	}
 	
 	

@@ -3,12 +3,17 @@
  */
 package library;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,11 +25,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bookData")
-public class Book {
+public class Book implements Serializable{
 	
 	@Id
-	private int entry_id;
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "bookEntryID")
+	private int entry_id;
 	
 	@Column(name = "title", nullable = false)
 	private String title;
@@ -38,8 +44,12 @@ public class Book {
 	@Column(name = "barcode", nullable = false)
 	private String barcode;
 	
-	//@OneToMany(mappedBy = "ID_number", cascade = CascadeType.ALL)
-	private String borrowerID; //foreign key (Patron ID number)
+	/**
+	 * many books have a single patron that checks them out
+	 * */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_number")
+	private Patron patron; //foreign key (Patron ID number)
 	
 	private int CheckIn_Out ;
 	
@@ -47,12 +57,12 @@ public class Book {
 		
 	}
 	
-	public Book(String title, String aurthorFirst,String aurthorLast, String barcode, String borrowerID, int CheckIn_Out) {
+	public Book(String title, String aurthorFirst,String aurthorLast, String barcode, Patron patron, int CheckIn_Out) {
 		this.title = title;
 		this.aurthorFirst = aurthorFirst;
 		this.aurthorLast = aurthorLast;
 		this.barcode = barcode;
-		this.borrowerID = borrowerID;
+		this.patron = patron;
 		this.CheckIn_Out = CheckIn_Out;
 		
 	}
@@ -82,11 +92,11 @@ public class Book {
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
-	public String getBorrowerID() {
-		return borrowerID;
+	public Patron getPatron() {
+		return patron;
 	}
-	public void setBorrowerID(String borrowerID) {
-		this.borrowerID = borrowerID;
+	public void setPatron(Patron patron) {
+		this.patron = patron;
 	}
 	public int getCheckIn_Out() {
 		return CheckIn_Out;

@@ -35,7 +35,6 @@ public class BookController {
 	/**
 	 * newBookForm  creates new book  object and returns the web page content
 	 * */
-	//create new book
 	@RequestMapping("/newBook")
 	public String newBookForm(Map<String, Object> model) {
 		Book book = new Book();

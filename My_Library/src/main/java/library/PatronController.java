@@ -12,10 +12,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-/**
- * @author Deyonta
- *
- */
+
 @Controller
 @RequestMapping("/")
 public class PatronController {
@@ -25,9 +22,10 @@ public class PatronController {
 	
 	/**
 	 * newPatron form creates new patron object and returns the web page content
+	 * @return the name of the web page
 	 * */
 	
-	@GetMapping("/newPatron")
+	@RequestMapping("/newPatron")
 	public String newPatronForm(Map <String, Object> model) {
 		Patron patron = new Patron();
 		model.put("patron", patron);
