@@ -5,6 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+	<div>
+		<h2>New Patron Confirmation Results</h2>
+		<p th:text="'Name:' + ${patron.firstName} + ' ' + ${patron.lastName}" />
+		<p th:text="'Address: ' + ${patron.address}" />
+		<p th:text="'ID Number: ' + ${patron.ID_number}" />
+		<p th:text="'Occupation: ' + ${patron.occupation}"/>
+		<a href="/newPatron">Add Another Patron</a><a href="/">Return To HomePage</a>
+	</div>
+	<div>
+		
+	</div>
 	
 </body>
 </html>

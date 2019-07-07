@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Confirmation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<div>
+		<h2>New Book Added To The Library!</h2>
+		<p th:text="'Title: ' + ${book.title} " />
+		<p th:text="'Author: ' + ${book.aurthorFirst} + ' ' + ${book.aurthorLast}" />
+		<p th:text="'Book Barcode: ' + ${book.barcode}" />
+		<a href="/newBook">Add Another Book</a> <a href="/">Return To HomePage</a>
+	</div>
+	<div>
+		
+	</div>
+	
+</body>
+</html>

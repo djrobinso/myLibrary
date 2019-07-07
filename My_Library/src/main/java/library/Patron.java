@@ -75,11 +75,11 @@ public class Patron implements Serializable{
 		return address;
 	}
 	
-	public String getID() {
+	public String getID_number() {
 		return ID_number;
 	}
 	
-	public String getOccuaption() {
+	public String getOccupation() {
 		return occupation;
 	}
 	
@@ -95,7 +95,7 @@ public class Patron implements Serializable{
 		this.address = address;
 	}
 	
-	public void setID(String ID_number) {
+	public void setID_number(String ID_number) {
 		this.ID_number = ID_number;
 	}
 
@@ -115,6 +115,8 @@ public class Patron implements Serializable{
 		this.booksCheckedOut = booksCheckedOut;
 	}
 	
-	
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
 	
 }

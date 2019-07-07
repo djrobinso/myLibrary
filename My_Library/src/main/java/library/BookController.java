@@ -35,10 +35,9 @@ public class BookController {
 	/**
 	 * newBookForm  creates new book  object and returns the web page content
 	 * */
-	@RequestMapping("/newBook")
-	public String newBookForm(Map<String, Object> model) {
-		Book book = new Book();
-		model.put("book", book);
+	@GetMapping("/newBook")
+	public String newBookForm(Model model) {
+		model.addAttribute("book", new Book());
 		return "newBook";
 	}
 	
@@ -47,7 +46,7 @@ public class BookController {
 	 * */
 	@PostMapping("/newBook")
 	public String submitNewBook(@ModelAttribute Book book) {
-		return "confirmation";
+		return "bookConfirm";
 	}
 	
 	
