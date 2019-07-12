@@ -21,6 +21,8 @@ public interface LibraryRepository extends CrudRepository<Book, Integer>{
 	 * @param the scanned barcode from the book
 	 * @return the found book in the database
 	**/
-	@Query(value = "SELECT * FROM bookData WHERE binary barcode = scannedBarcode", nativeQuery=true)
+	@Query(value = "SELECT * FROM bookData WHERE barcode = scannedBarcode", nativeQuery=true)
 	public Book checkBookIn(String scannedBarcode);
+	
+	
 }

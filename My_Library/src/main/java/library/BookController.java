@@ -42,11 +42,27 @@ public class BookController {
 	}
 	
 	/**
-	 * after creating the new book take them to the confirmation page
+	 * submitNewBook after creating the new book take them to the confirmation page
 	 * */
 	@PostMapping("/newBook")
 	public String submitNewBook(@ModelAttribute Book book) {
+		book.setCheckIn_Out(0);
+		libraryRepository.save(book);
 		return "bookConfirm";
+	}
+	
+	/**
+	 * checkInBook takes in the barcode of the book and checks it back into the library
+	 * @return view with the information of the book and a confirmation to check in another 
+	 * or return to the homepage
+	 * ***/
+	@RequestMapping("/CheckIn")
+	public String checkBookIn(@RequestParam("checkInBarcode") String barcode, Model model) {
+		Book checkedInBook = libraryRepository.checkBookIn(barcode);
+		//change the book to be checked back into the library
+		checkedInBook.setCheckIn_Out(0);
+		model.addAttribute("checkedInBook", checkedInBook);
+		return "CheckIn";
 	}
 	
 	

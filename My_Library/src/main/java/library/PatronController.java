@@ -48,9 +48,11 @@ public class PatronController {
 	
 	/**
 	 * newPatroSubmit takes in the form , submit it and then takes you to the confirmation page
+	 * @return the view "confirmation" the confirmation age to the user
 	 * */
 	@PostMapping("/newPatron")
 	public String newPatronSubmit(@ModelAttribute Patron patron) {
+		patronRepository.save(patron);
 		return "confirmation";
 	}
 	
