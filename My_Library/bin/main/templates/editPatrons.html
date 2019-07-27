@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h2>Library Patrons</h2>
+		<table>
+			<thead>
+			<tr>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Address</th>
+				<th>ID Number</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr></tr>
+				<tr th:each="patron : ${patrons}">
+					<td><span th:text="${patron.lastName}"></span></td>
+					<td><span th:text="${patron.firstName}"></span></td>
+					<td><span th:text="${patron.address}"></span></td>
+					<td><span th:text="${patron.ID_number}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

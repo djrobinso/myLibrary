@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -37,6 +38,7 @@ public class PatronController {
 		return "newPatron";
 	}
 	**/
+	
 	/**
 	 * submitNewPatron will take you to the confirmation page
 	 * */
@@ -54,6 +56,29 @@ public class PatronController {
 	public String newPatronSubmit(@ModelAttribute Patron patron) {
 		patronRepository.save(patron);
 		return "confirmation";
+	}
+	
+	
+	/**
+	 * checkBookOut take in the ID number of the patron and then checks the book out to 
+	 * that patron by changing the checkedOut value and adding the patron ID as the book borrower.
+	 * It takes you from the homepage to the checkOut page
+	 * @return the view of the page displaying the patron info
+	 * **/
+	@GetMapping("/CheckOut")
+	public String checkBookOut(@RequestParam("enteredID") String enteredID, Model model) {
+		model.addAttribute("patron", patronRepository.pullPatronData(enteredID));
+		return "CheckOut";
+	}
+	
+	/***
+	 * getAllPatrons uses a model attribute creates the list of all the Patrons in the database 
+	 * and returns them so the user can edit them selected Patron
+	 * ***/
+	@GetMapping("/editPatrons")
+	public String getAllPatrons(Model model) {
+		model.addAttribute("patrons", patronRepository.findAll());
+		return "editPatrons";
 	}
 	
 	

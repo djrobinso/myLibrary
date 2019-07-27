@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Getting Started: Serving Web Content</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h2>Welcome to the MyLibrary Homepage</h2>
 	<div>
-		<form action="#" th:action="@{CheckIn}" method="post">
+		<form action="#" th:action="@{/CheckIn}" method="post">
 			<label>Check Book In</label> 
 			<input type="text" name="checkInBarcode" placeholder="Please Enter the Book Barcode to Check Book Into Library" />
-			<button type="button">Submit</button>
+			<input type="button" value="Submit" />
 		</form>
 		<br />
-		<form>
+		<form th:action="@{/CheckOut}"  method="get">
 			<label>Check Book Out</label> 
-			<input type="text" name="" placeholder="Please Enter the ID Number to Check Book Into Library" />
-			<button type="button">Submit</button>
+			<input type="text" name="enteredID" placeholder="Please Enter the ID Number to Check Book Into Library"" />
+			<input type="button" value="Check Book Out" />
 		</form>
 	</div>
 	<br />
@@ -31,10 +31,10 @@
 	<br />
 	<br />
 
-	<a href="">Manually Edit Book Information</a>
+	<a href="/editBooks">Edit Books in Library</a>
 	<br />
 	<br />
-	<a href="">Manually Edit Patron Information</a>
+	<a href="/editPatrons">Edit Patrons in Library</a>
 	<br />
 	<br />
 

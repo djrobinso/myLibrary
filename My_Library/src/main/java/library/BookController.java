@@ -65,9 +65,15 @@ public class BookController {
 		return "CheckIn";
 	}
 	
-	
-	
-	//check new book out
+	/**
+	 * getAllBooks creates the model attribute of all the books within the library database so that
+	 * the user can edit the selected book info
+	 * ***/
+	@GetMapping("/editBooks")
+	public String getAllBooks(Model model) {
+		model.addAttribute("books", libraryRepository.findAll() );
+		return "editBooks";
+	}
 	
 	
 
