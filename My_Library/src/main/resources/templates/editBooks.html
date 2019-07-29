@@ -9,9 +9,24 @@
 		<h2>Library Patrons</h2>
 		<table>
 			<thead>
-				<tr></tr>
+			<tr>
+				<th>Title</th>
+				<th>Aurthor FirstName</th>
+				<th>Aurthor Last Name</th>
+				<th>Barcode</th>
+			</tr>
 			</thead>
-			<tbody></tbody>
+			<tbody>
+				<tr></tr>
+				<tr th:each="book : ${books}">
+					<td><span th:text="${book.title}"></span></td>
+					<td><span th:text="${book.aurthorFirst}"></span></td>
+					<td><span th:text="${book.aurthorLast}"></span></td>
+					<td><span th:text="${book.barcode}"></span></td>
+					<td><a th:href="@{/update/{ID_number}(ID_number = {$patron.ID_number}) }" >Edit Book</a></td>
+					<td><a th:href="@{/delete/{ID_number}(ID_number = {$patron.ID_number}) }" >Delete Book</a></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>

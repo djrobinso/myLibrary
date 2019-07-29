@@ -81,5 +81,17 @@ public class PatronController {
 		return "editPatrons";
 	}
 	
+	@GetMapping("/update/{ID_number}")
+	public String getUpdateForm() {
+		return null;
+		
+	}
+	
+	@PostMapping("/delete/{ID_number}")
+	public String updatePatron() {
+		return null;
+		
+	}
+	
 	
 }//end of Patron Controller

@@ -3,6 +3,7 @@
  */
 package library;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,12 +17,12 @@ import library.Patron;
  */
 public interface PatronRepository extends CrudRepository<Patron, Integer>{
 	
-	/**
-	 * 
-	 * **/
+	/** **/
 	@Query(value = "SELECT * FROM patronData WHERE ID_number = pulledPatronID", nativeQuery=true)
 	public Patron pullPatronData(@Param("pulledPatronID") String pulledPatronID);
 	
+	/***/
+	List <Patron> findByIDNumber(String ID_number);
 	
 	
 }
