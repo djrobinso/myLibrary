@@ -17,14 +17,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr></tr>
 				<tr th:each="patron : ${patrons}">
 					<td><span th:text="${patron.lastName}"></span></td>
 					<td><span th:text="${patron.firstName}"></span></td>
 					<td><span th:text="${patron.address}"></span></td>
 					<td><span th:text="${patron.ID_number}"></span></td>
+					<!-- 
 					<td><a th:href="@{/update/{ID_number}(ID_number = {$patron.ID_number}) }" >Edit Patron</a></td>
 					<td><a th:href="@{/delete/{ID_number}(ID_number = {$patron.ID_number}) }" >Delete Patron</a></td>
+					-->
 				</tr>
 			</tbody>
 		</table>

@@ -19,10 +19,12 @@ public interface PatronRepository extends CrudRepository<Patron, Integer>{
 	
 	/** **/
 	@Query(value = "SELECT * FROM patronData WHERE ID_number = pulledPatronID", nativeQuery=true)
-	public Patron pullPatronData(@Param("pulledPatronID") String pulledPatronID);
+	List <Patron> pullPatronData(@Param("pulledPatronID") String pulledPatronID);
 	
-	/***/
-	List <Patron> findByIDNumber(String ID_number);
+	/**
+	@Query(value="SELECT * From patronData WHERE ID_number = ID_Number", nativeQuery = true)
+	List <Patron> findByID_number(String ID_number);
+	**/
 	
 	
 }

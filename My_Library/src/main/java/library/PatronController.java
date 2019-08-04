@@ -7,12 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -81,16 +84,22 @@ public class PatronController {
 		return "editPatrons";
 	}
 	
-	@GetMapping("/update/{ID_number}")
-	public String getUpdateForm() {
-		return null;
+	/***
+	 * 
+	 * **/
+	@PostMapping("/update/{ID_number}")
+	public String getUpdateForm(@PathVariable("ID_number") String ID_number, @Valid Patron patron) {
 		
+		return "updatePatron";
 	}
 	
+	/**
+	 * 
+	 * ***/
 	@PostMapping("/delete/{ID_number}")
 	public String updatePatron() {
-		return null;
 		
+		return "index";
 	}
 	
 	
